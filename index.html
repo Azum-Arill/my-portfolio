@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Arill Shukla — Product Designer</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <meta name="description"
+    content="Arill Shukla is a student product designer based in India, fascinated by hands-on experimentation, material exploration, and purposeful problem-solving.">
+  <meta property="og:title" content="Arill Shukla — Product Designer">
+  <meta property="og:description"
+    content="Aspiring designer fascinated by hands-on experimentation, material exploration, and purposeful problem-solving.">
+  <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+
+  <!-- ═══ Page Transition Overlay ═══ -->
+  <div class="page-transition-overlay"></div>
+
+  <!-- ═══ Navigation ═══ -->
+  <nav class="nav" id="main-nav">
+    <span class="nav-logo" data-page="home">ARILL SHUKLA</span>
+    <div class="nav-links">
+      <a class="nav-link active" data-page="home">PROJECTS</a>
+      <a class="nav-link" data-page="about">ABOUT</a>
+      <a class="nav-link" data-page="contact">CONTACT</a>
+    </div>
+    <button class="nav-toggle" aria-label="Menu">
+      <span></span><span></span><span></span>
+    </button>
+  </nav>
+
+  <!-- ═══ Mobile Menu ═══ -->
+  <div class="mobile-menu">
+    <a data-page="home">PROJECTS</a>
+    <a data-page="about">ABOUT</a>
+    <a data-page="contact">CONTACT</a>
+  </div>
+
+  <!-- ═══════════════════════════════════════════════════════
+       PAGE: HOME (Hero + Projects)
+       ═══════════════════════════════════════════════════════ -->
+  <div id="page-home" class="page-section active visible">
+
+    <!-- ─── Hero ─── -->
+    <section class="hero" id="hero-section">
+      <!-- Floating geometric shapes -->
+      <div class="hero-shapes">
+        <div class="hero-shape shape-1"></div>
+        <div class="hero-shape shape-2"></div>
+        <div class="hero-shape shape-3"></div>
+        <div class="hero-shape shape-4"></div>
+        <div class="hero-shape shape-5"></div>
+      </div>
+
+      <!-- Background GIF -->
+      <div class="hero-bg-gif">
+        <img src="images/images/gifgifgif.gif" alt="Background Animation">
+      </div>
+
+      <!-- Main Hero Content -->
+      <div class="hero-content">
+        <div class="hero-text">
+          <h1 class="hero-name">
+            <span class="hero-name-line" data-text="ARILL">
+              <span class="hero-name-inner">ARILL</span>
+            </span>
+            <span class="hero-name-line" data-text="SHUKLA">
+              <span class="hero-name-inner">SHUKLA</span>
+            </span>
+          </h1>
+        </div>
+      </div>
+
+      <!-- Bottom Info -->
+      <div class="hero-bottom">
+        <div class="hero-subtitle">
+          <span class="hero-subtitle-bold">Student Designer</span>
+          <span>Based in India</span>
+        </div>
+        <div class="hero-scroll-indicator" id="hero-scroll-indicator">
+          <span>Scroll Down</span>
+          <span class="hero-scroll-arrow">↓</span>
+        </div>
+        <div class="hero-bottom-spacer"></div>
+      </div>
+    </section>
+
+    <!-- ─── Projects Area ─── -->
+    <section id="projects-area" class="projects-section">
+      <div class="section-label reveal">Selected Work</div>
+      <h2 class="section-title reveal">Projects</h2>
+
+      <!-- Filter Bar -->
+      <div class="filter-bar reveal">
+        <button class="filter-btn active" data-filter="all" onclick="setFilter('all')">All</button>
+        <button class="filter-btn" data-filter="product-design" onclick="setFilter('product-design')">Product
+          Design</button>
+        <button class="filter-btn" data-filter="artworks" onclick="setFilter('artworks')">Artworks</button>
+        <button class="filter-btn" data-filter="sketches" onclick="setFilter('sketches')">Sketches</button>
+      </div>
+
+      <!-- Project Grid -->
+      <div id="project-grid" class="project-grid"></div>
+    </section>
+  </div>
+
+  <!-- ═══ Project Detail View ═══ -->
+  <div id="project-detail-view" class="page-section"></div>
+
+  <!-- ═══════════════════════════════════════════════════════
+       PAGE: ABOUT
+       ═══════════════════════════════════════════════════════ -->
+  <div id="page-about" class="page-section">
+    <section class="about-section">
+      <div class="about-hero">
+        <div class="section-label reveal">About</div>
+        <h1 class="section-title reveal">ARILL<br>SHUKLA</h1>
+
+      </div>
+
+      <div class="about-grid">
+        <div class="about-text reveal">
+          <p>
+            I'm a student product designer based in India with a deep curiosity for how things are made.
+            My work sits at the intersection of design and craft — exploring how materials behave,
+            how forms emerge from function, and how thoughtful design can address real-world challenges.
+          </p>
+          <p>
+            Whether I'm folding polypropylene into deployable shelters, throwing clay on a wheel,
+            or sketching furniture joints, I approach every project with the same hands-on mentality.
+            I believe in learning through making — each prototype, each failed experiment, and each
+            material test brings me closer to design solutions that are both beautiful and purposeful.
+          </p>
+          <p>
+            I'm drawn to projects that require physical problem-solving: understanding how loads transfer
+            through a structure, how a surface texture affects grip, or how a folding pattern enables flat-pack
+            shipping. These tangible challenges keep me grounded and constantly learning.
+          </p>
+        </div>
+
+        <div class="about-sidebar reveal">
+          <div class="about-sidebar-block">
+            <h3>Focus Areas</h3>
+            <ul>
+              <li>Product Design</li>
+              <li>Material Exploration</li>
+              <li>Fabrication & Prototyping</li>
+              <li>Sustainable Design</li>
+              <li>Furniture & Objects</li>
+            </ul>
+          </div>
+
+          <div class="about-sidebar-block">
+            <h3>Skills</h3>
+            <ul>
+              <li>CAD — SolidWorks, Rhino, Fusion 360</li>
+              <li>Fabrication — Woodwork, Metalwork</li>
+              <li>Ceramics — Wheel Throwing, Hand Building</li>
+              <li>Prototyping — 3D Printing, Laser Cutting</li>
+              <li>Visual — Adobe Suite, Figma</li>
+            </ul>
+          </div>
+
+          <div class="about-sidebar-block">
+            <h3>Education</h3>
+            <ul>
+              <li>Currently studying Design</li>
+              <li>Based in India</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+
+    </section>
+  </div>
+
+  <!-- ═══════════════════════════════════════════════════════
+       PAGE: CONTACT
+       ═══════════════════════════════════════════════════════ -->
+  <div id="page-contact" class="page-section">
+    <section class="contact-section">
+      <div class="contact-header">
+        <div class="section-label reveal">Get in Touch</div>
+        <h1 class="section-title reveal">CONTACT</h1>
+      </div>
+
+      <div class="contact-content">
+        <div class="contact-intro reveal">
+          <p>
+            Interested in collaborating, have a question about my work,
+            or just want to say hello? I'd love to hear from you.
+          </p>
+
+          <a href="mailto:arillshukla@gmail.com" class="contact-email-link">
+            ARILLSHUKLA@GMAIL.COM
+          </a>
+
+          <div class="contact-socials">
+            <a href="https://www.linkedin.com/in/arillshukla" class="contact-social-link" target="_blank">LinkedIn</a>
+            <a href="#" class="contact-social-link" target="_blank">Resume</a>
+            <a href="#" class="contact-social-link" target="_blank">Second Portfolio</a>
+          </div>
+        </div>
+
+        <div class="contact-form reveal">
+          <form id="contact-form"
+            onsubmit="event.preventDefault(); alert('Message sent! (Form submission placeholder)');">
+            <div class="form-group">
+              <label for="contact-name">Name</label>
+              <input type="text" id="contact-name" name="name" required placeholder="Your name">
+            </div>
+            <div class="form-group">
+              <label for="contact-email">Email</label>
+              <input type="email" id="contact-email" name="email" required placeholder="your@email.com">
+            </div>
+            <div class="form-group">
+              <label for="contact-message">Message</label>
+              <textarea id="contact-message" name="message" required
+                placeholder="Tell me about your project or idea..."></textarea>
+            </div>
+            <button type="submit" class="form-submit">Send Message</button>
+          </form>
+        </div>
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+      <div class="footer-left">© 2025 Arill Shukla. All Rights Reserved.</div>
+      <div class="footer-right">Student Designer — India</div>
+    </footer>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+
+</html>
