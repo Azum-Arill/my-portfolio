@@ -15,6 +15,10 @@
   --text-light: #6B6B6B;
   --accent: #E8553A;
   --accent-hover: #D44830;
+
+  /* hero name colour: use site text color (black/grey) */
+  --hero-name-color: var(--text);
+  /* reverted to main text color */
   --white: #FAFAF8;
   --grey: #999;
   --border: #C8C3BB;
@@ -44,12 +48,21 @@ html {
 }
 
 body {
-  background: var(--bg);
   color: var(--text);
   font-family: var(--font-body);
   overflow-x: hidden;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  background: transparent;
+}
+
+/* Base background color move to pseudo-element for grain layering */
+body::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  background: var(--bg);
+  z-index: -2;
 }
 
 a {
@@ -67,20 +80,71 @@ ol {
   list-style: none;
 }
 
-/* ---------- Grain Texture Overlay ---------- */
+/* ---------- Grain Texture Overlay (Animated) ---------- */
 body::after {
   content: '';
   position: fixed;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
   pointer-events: none;
-  z-index: 9999;
-  opacity: 0.035;
+  z-index: 1.5;
+  /* Behind content, in front of body::before */
+  opacity: 0.2;
   background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
   background-repeat: repeat;
-  background-size: 180px;
+  background-size: 400px;
+  animation: grain 8s steps(10) infinite;
+
+  /* Hardware Acceleration */
+  will-change: transform;
+  transform: translate3d(0, 0, 0);
+  backface-visibility: hidden;
+}
+
+@keyframes grain {
+
+  0%,
+  100% {
+    transform: translate(0, 0);
+  }
+
+  10% {
+    transform: translate(-5%, -5%);
+  }
+
+  20% {
+    transform: translate(-10%, 5%);
+  }
+
+  30% {
+    transform: translate(5%, -10%);
+  }
+
+  40% {
+    transform: translate(-5%, 15%);
+  }
+
+  50% {
+    transform: translate(-10%, 5%);
+  }
+
+  60% {
+    transform: translate(10%, 0%);
+  }
+
+  70% {
+    transform: translate(0%, 10%);
+  }
+
+  80% {
+    transform: translate(5%, 15%);
+  }
+
+  90% {
+    transform: translate(-5%, 5%);
+  }
 }
 
 /* ---------- Navigation ---------- */
@@ -130,7 +194,7 @@ body::after {
 
 .nav-link {
   font-family: var(--font-mono);
-  font-size: 14px;
+  font-size: 13px;
   font-weight: 500;
   letter-spacing: 0.1em;
   text-transform: uppercase;
@@ -197,7 +261,7 @@ body::after {
   align-items: center;
   justify-content: center;
   overflow: hidden;
-  background: var(--bg);
+  background: transparent;
 }
 
 /* --- Floating Geometric Shapes --- */
@@ -276,19 +340,27 @@ body::after {
   width: 100%;
   height: 100%;
   object-fit: cover;
-  opacity: 0.8;
-  /* Subtle opacity to allow background color to seep through */
+  opacity: 0.5;
+  /* Reduced opacity to blend with cream background */
 }
 
-/* Secondary dark overlay for text readability */
+/* Video fallback styling to match previous GIF area */
+.hero-bg-gif video {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  opacity: 0.9;
+}
+
+/* Stronger cream overlay for better blending */
 .hero-bg-gif::after {
   content: '';
   position: absolute;
   inset: 0;
   background: linear-gradient(to bottom,
-      rgba(240, 236, 228, 0.6) 0%,
-      rgba(240, 236, 228, 0.3) 50%,
-      rgba(240, 236, 228, 0.6) 100%);
+      rgba(240, 236, 228, 0.75) 0%,
+      rgba(240, 236, 228, 0.45) 50%,
+      rgba(240, 236, 228, 0.75) 100%);
   z-index: 1;
 }
 
@@ -365,8 +437,8 @@ body::after {
   font-family: var(--font-hero);
   font-weight: 900;
   font-size: clamp(55px, 9vw, 140px);
-  line-height: 0.88;
-  color: var(--text);
+  line-height: 0.75;
+  color: var(--hero-name-color);
   letter-spacing: -0.02em;
   text-transform: uppercase;
   display: flex;
@@ -387,6 +459,10 @@ body::after {
   opacity: 0;
   transform: translateY(100%);
   animation: heroNameReveal 0.9s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+  padding-right: 0.05em;
+  /* Prevent right clipping */
+  padding-bottom: 0.1em;
+  /* Prevent bottom clipping */
 }
 
 .hero-name-line:nth-child(1) .hero-name-inner {
@@ -520,6 +596,8 @@ body::after {
   display: none;
   opacity: 0;
   transition: opacity 0.4s ease;
+  position: relative;
+  z-index: 1;
 }
 
 .page-section.active {
@@ -1098,7 +1176,7 @@ body::after {
   left: 0;
   right: 0;
   bottom: 0;
-  background: var(--bg);
+  background: transparent;
   z-index: 999;
   flex-direction: column;
   align-items: center;
@@ -1268,4 +1346,41 @@ body::after {
   .hero-content {
     padding: 0 20px;
   }
+}
+
+/* Resume Link Styling */
+.resume-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  background: var(--text);
+  color: var(--bg);
+  padding: 12px 24px;
+  border: 1px solid var(--text);
+  font-family: var(--font-mono);
+  font-size: 13px;
+  font-weight: 500;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  transition: all 0.3s cubic-bezier(0.22, 1, 0.36, 1);
+  margin-top: 5px;
+  text-decoration: none;
+}
+
+.resume-link:hover {
+  background: transparent;
+  color: var(--text);
+}
+
+.resume-link-text {
+  font-weight: 600;
+}
+
+.resume-link-icon {
+  font-size: 16px;
+  transition: transform 0.3s ease;
+}
+
+.resume-link:hover .resume-link-icon {
+  transform: translate(3px, -3px);
 }

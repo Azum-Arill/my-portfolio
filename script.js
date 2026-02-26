@@ -388,9 +388,9 @@ function navigateTo(page) {
       overlay.classList.remove('exiting');
       isTransitioning = false;
       triggerReveal();
-    }, 400);
+    }, 300);
 
-  }, 400);
+  }, 300);
 }
 
 function updateNavActive() {
@@ -581,8 +581,8 @@ function showProjectDetail(projectId) {
     setTimeout(() => {
       overlay.classList.remove('exiting');
       isTransitioning = false;
-    }, 400);
-  }, 400);
+    }, 300);
+  }, 300);
 }
 
 function buildProjectDetailHTML(project) {
